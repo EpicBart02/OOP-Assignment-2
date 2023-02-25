@@ -4,16 +4,54 @@
 
 package assignmenttwo;
 
-
 /**
  * This is the generated Hello World Greeting App.
  */
 public class App {
 
   private void sunPlanetMoon() {
-  
+  assignmenttwo.solitares.Star sun = new assignmenttwo.solitares.Star("Sun", 6304761);
+  System.out.println("Solar System:");
+  System.out.println();
+  System.out.println(sun.toString());
+  System.out.println();
+
+  assignmenttwo.solitares.Planet[] planets = new assignmenttwo.solitares.Planet[4];
+
+  assignmenttwo.solitares.Planet Mercury = new assignmenttwo.solitares.Planet("Mercury", 2439);
+  planets[0] = Mercury;
+  assignmenttwo.solitares.Planet Venus = new assignmenttwo.solitares.Planet("Venus", 6051);
+  planets[1] = Venus;
+  assignmenttwo.solitares.Planet Earth = new assignmenttwo.solitares.Planet("Earth", 6371);
+  planets[2] = Earth;
+  assignmenttwo.solitares.Planet Mars = new assignmenttwo.solitares.Planet("Mars", 3389);
+  planets[3] = Mars;
+
+  assignmenttwo.solitares.Moon[] Moons = new assignmenttwo.solitares.Moon[4];
+
+  assignmenttwo.solitares.Moon Moon = new assignmenttwo.solitares.Moon("Moon", 1737);
+  Moons[0] = Moon;
+  assignmenttwo.solitares.Moon Phobos = new assignmenttwo.solitares.Moon("Phobos", 12);
+  Moons[1] = Phobos;
+  assignmenttwo.solitares.Moon Io = new assignmenttwo.solitares.Moon("Io", 1821);
+  Moons[2] = Io;
+  assignmenttwo.solitares.Moon Europa = new assignmenttwo.solitares.Moon("Europa", 1560);
+  Moons[3] = Europa;
+
+  System.out.println("Planets: ");
+
+  for (int i = 0; i <4; i++) {
+    System.out.println(planets[i]);
+  }
+  System.out.println();
+  System.out.println("Moons: ");
+
+  for (int i = 0; i <4; i++) {
+    System.out.println(Moons[i]);
+  }
   }
 
+  
   private void heavenlyBody() {
 
   }
@@ -21,6 +59,7 @@ public class App {
   private void solarSytem() {
     
   }
+  
 
   /**
    * The App starting point.
