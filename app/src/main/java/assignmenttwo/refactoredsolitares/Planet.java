@@ -15,7 +15,7 @@ public class Planet extends HeavenlyBody {
    * This is a class that checks the average radius. If it is too small, we throw an illegal argument.
    */
 
-  public void checkAvgRadiusInKm(int radius) {
+  protected void checkAvgRadiusInKm(int radius) {
     if (radius < 2000 || radius > 200000) {
       throw new IllegalArgumentException("The radius has to be between 2000km and 200 000km.");
     }

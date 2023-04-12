@@ -4,7 +4,6 @@
 
 package assignmenttwo;
 
-import assignmenttwo.refactoredsolitares.Planet;
 
 /**
 * This is the generated Hello World Greeting App.

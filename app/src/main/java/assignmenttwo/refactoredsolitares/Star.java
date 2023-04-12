@@ -15,7 +15,7 @@ public class Star extends HeavenlyBody {
    * This is a class that checks the average radius. If it is too small, we throw an illegal argument.
    */
 
-  public void checkAvgRadiusInKm(int radius) {
+  protected void checkAvgRadiusInKm(int radius) {
     if (radius < 16700) {
       throw new IllegalArgumentException("The radius has to be between above 16 700km.");
     }

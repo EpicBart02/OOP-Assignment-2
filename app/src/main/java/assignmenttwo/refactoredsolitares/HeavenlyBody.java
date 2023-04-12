@@ -10,7 +10,7 @@ public abstract class HeavenlyBody {
   private String name;
   private int avgRadiusInKm;
   
-  public HeavenlyBody(String newName, int newAvg) {
+  protected HeavenlyBody(String newName, int newAvg) {
     setName(newName);
     setAvgRadiusInKm(newAvg);
   }
@@ -36,7 +36,7 @@ public abstract class HeavenlyBody {
     this.avgRadiusInKm = newAvg;
   }
 
-  public abstract void checkAvgRadiusInKm(int avgRadius);
+  protected abstract void checkAvgRadiusInKm(int avgRadius);
   
   public String toString() {
     return name + ", And the average radius is " + avgRadiusInKm + "km";
