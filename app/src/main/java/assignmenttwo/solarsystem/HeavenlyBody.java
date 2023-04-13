@@ -8,12 +8,14 @@ public abstract class HeavenlyBody implements java.lang.Comparable<HeavenlyBody>
   
   private String name;
   private Integer avgRadiusInKm;
+  private Integer averageTemperature;
   
   public HeavenlyBody() {}
   
-  protected HeavenlyBody(String name, int avgRadiusInKm) {
+  protected HeavenlyBody(String name, int avgRadiusInKm, int temp) {
     this.name = name;
     this.avgRadiusInKm = avgRadiusInKm;
+    this.averageTemperature = temp;
   }
   
   public String getName() {
@@ -38,7 +40,17 @@ public abstract class HeavenlyBody implements java.lang.Comparable<HeavenlyBody>
   public void setAvgRadiusInKm(int radius) {
     this.avgRadiusInKm = radius;
   }
+
+  public int getAvgTemp() {
+    return averageTemperature;
+  }
+
+  public void setAvgTemp(int temp) {
+    this.averageTemperature = temp;
+  }
   
+  protected abstract void checkAvgTemp(int temp);
+
   protected abstract void checkAvgRadiusInKm(int radius);
   
   public String toString() {

@@ -14,8 +14,8 @@ public class Star extends HeavenlyBody {
    * constructor for star.
    */
 
-  public Star(String name, int avgRadiusInKm) {
-    super(name, avgRadiusInKm);
+  public Star(String name, int avgRadiusInKm, int averageTemperature) {
+    super(name, avgRadiusInKm, averageTemperature);
     setName(name);
     checkAvgRadiusInKm(avgRadiusInKm);
     planets = new ArrayList<Planet>();
@@ -26,8 +26,8 @@ public class Star extends HeavenlyBody {
    * constructor to addplanet.
    */
 
-  public Planet addPlanet(String name, int avgRadiusInKm, double avgOrbitRadiusInKm) {
-    Planet planet = new Planet(name, avgRadiusInKm, avgOrbitRadiusInKm);
+  public Planet addPlanet(String name, int avgRadiusInKm, double avgOrbitRadiusInKm, int temp) {
+    Planet planet = new Planet(name, avgRadiusInKm, avgOrbitRadiusInKm, temp);
     planets.add(planet);
     return planet;
   }
@@ -38,25 +38,25 @@ public class Star extends HeavenlyBody {
 
   public HeavenlyBody[] getHeavenlyBodies() {
     int length = planets.size() + 1;
-    for (Planet planium : planets) {
-      length += planium.moons.size();
+    for (Planet planet : planets) {
+      length += planet.moons.size();
     }
     HeavenlyBody[] copy = new HeavenlyBody[length];
-    Star cope = new Star(getName(), getAvgRadiusInKm());
+    Star cope = new Star(getName(), getAvgRadiusInKm(), getAvgTemp());
     copy[0] = cope;
-    int checkster = 1;
+    int h = 1;
     for (int i = 0; i < planets.size(); ++i) {
-      Planet copium = new Planet(planets.get(i).getName(), planets.get(i).getAvgRadiusInKm(),
-            planets.get(i).getAvgOrbitRadiusInKm());
-      copy[checkster] = copium;
-      checkster++;
+      Planet copies = new Planet(planets.get(i).getName(), planets.get(i).getAvgRadiusInKm(),
+            planets.get(i).getAvgOrbitRadiusInKm(), planets.get(i).getAvgTemp());
+      copy[h] = copies;
+      h++;
     }
-    for (Planet planium : planets) {
-      for (Moon moonioom : planium.moons) {
-        Moon copiummoon = new Moon(moonioom.getName(), moonioom.getAvgRadiusInKm(),
-            moonioom.getAvgOrbitRadiusInKm());
-        copy[checkster] = copiummoon;
-        checkster++;
+    for (Planet planet : planets) {
+      for (Moon moon : planet.moons) {
+        Moon mooncopy = new Moon(moon.getName(), moon.getAvgRadiusInKm(),
+            moon.getAvgOrbitRadiusInKm(), moon.getAvgTemp());
+        copy[h] = mooncopy;
+        h++;
       }
     }
     return copy;
@@ -69,11 +69,17 @@ public class Star extends HeavenlyBody {
     }
   }
 
+  protected void checkAvgTemp(int temp) {
+    if (temp < 10000) {
+      throw new IllegalArgumentException("The temp is out of bounds, please pick a temprature over 10.000 C");
+    }
+  }
+
   /**
-   * amogus.
+   * Prints string.
    */
   public String toString() {
-    String pin = "Star: " + getName() + " average radius " + getAvgRadiusInKm() + " \n "; 
+    String pin = "Star: " + getName() + ", average radius " + getAvgRadiusInKm() + " \n "; 
     for (Planet i : planets) {
       pin += i;
     }

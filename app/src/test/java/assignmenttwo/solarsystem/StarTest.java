@@ -9,68 +9,86 @@ import org.junit.jupiter.api.Test;
 
 class StarTest {
 
-  /*@Test
+  @Test
   void testStarConstructor_nullName() {
-    assertThrows(IllegalArgumentException.class, () -> new Star(null, 2000000));
-  }*/
+    assertThrows(IllegalArgumentException.class, () -> new Star(null, 2000000, 10000));
+  }
 
-  /*@Test
+  @Test
   void testStarConstructor_emptyName() {
-    assertThrows(IllegalArgumentException.class, () -> new Star("", 2000000));
-  }*/
+    assertThrows(IllegalArgumentException.class, () -> new Star("", 2000000, 10000));
+  }
 
-  /*@Test
+  @Test
   void testStarConstructor_radiusTooSmall() {
-    assertThrows(IllegalArgumentException.class, () -> new Star("TestStar", 16699));
-  }*/
+    assertThrows(IllegalArgumentException.class, () -> new Star("TestStar", 16699, 10000));
+  }
 
-  /*@Test
+  @Test
+  void testStarConstructor_tempTooLow() {
+    assertThrows(IllegalArgumentException.class, () -> new Star("TestStar", 16699, 5));
+  }
+
+  @Test
   void testStarConstructor_validInput() {
-    Star star = new Star("TestStar", 2000000);
+    Star star = new Star("TestStar", 2000000, 10000);
     assertEquals("TestStar", star.getName());
     assertEquals(2000000, star.getAvgRadiusInKm());
-  }*/
+    assertEquals(10000, star.getAvgTemp());
+  }
 
-  /*@Test
+  @Test
   void testAddPlanet_nullName() {
-    Star star = new Star("TestStar", 2000000);
-    assertThrows(IllegalArgumentException.class, () -> star.addPlanet(null, 100000, 100));
-  }*/
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet(null, 100000, 100, 40));
+  }
 
-  /*@Test
+  @Test
   void testAddPlanet_emptyName() {
-    Star star = new Star("TestStar", 2000000);
-    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("", 100000, 100));
-  }*/
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("", 100000, 100, 40));
+  }
 
-  /*@Test
+  @Test
   void testAddPlanet_radiusTooSmall() {
-    Star star = new Star("TestStar", 2000000);
-    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 1999, 100));
-  }*/
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 1999, 100, 40));
+  }
 
-  /*@Test
+  @Test
   void testAddPlanet_radiusTooLarge() {
-    Star star = new Star("TestStar", 2000000);
-    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 2000001, 100));
-  }*/
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 2000001, 100, 40));
+  }
 
-  /*@Test
+  @Test
+  void testAddPlanet_tempTooLow() {
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 1999, 100, -500));
+  }
+
+  @Test
+  void testAddPlanet_tempTooHigh() {
+    Star star = new Star("TestStar", 2000000, 10000);
+    assertThrows(IllegalArgumentException.class, () -> star.addPlanet("TestPlanet", 1999, 100, 10000));
+  }
+
+  @Test
   void testAddPlanet_validInput() {
-    Star star = new Star("TestStar", 2000000);
-    Planet planet = star.addPlanet("TestPlanet", 100000, 18000);
+    Star star = new Star("TestStar", 2000000, 10000);
+    Planet planet = star.addPlanet("TestPlanet", 100000, 18000, 40);
     assertEquals("TestPlanet", planet.getName());
     assertEquals(100000, planet.getAvgRadiusInKm());
     assertEquals(18000, planet.getAvgOrbitRadiusInKm());
-  }*/
+  }
 
-  /*@Test
+  @Test
   void testGetHeavenlyBodies() {
-    final Star star = new Star("TestStar", 2000000);
-    final Planet planet1 = star.addPlanet("TestPlanet1", 100000, 18000);
-    final Planet planet2 = star.addPlanet("TestPlanet2", 200000, 28000);
-    final Moon moon1 = planet1.addMoon("TestMoon1", 50, 60);
-    final Moon moon2 = planet2.addMoon("TestMoon2", 60, 60);
+    final Star star = new Star("TestStar", 2000000, 10000);
+    final Planet planet1 = star.addPlanet("TestPlanet1", 100000, 18000, 40);
+    final Planet planet2 = star.addPlanet("TestPlanet2", 200000, 28000, 50);
+    final Moon moon1 = planet1.addMoon("TestMoon1", 50, 60, 4);
+    final Moon moon2 = planet2.addMoon("TestMoon2", 60, 60, 5);
     
     HeavenlyBody[] bodies = star.getHeavenlyBodies();
     
@@ -80,15 +98,15 @@ class StarTest {
     assertInArray(planet2, bodies);
     assertInArray(moon1, bodies);
     assertInArray(moon2, bodies);
-  }*/
+  }
 
-  /*@Test
+  @Test
   void testGetHeavenlyBodies_areCopied() {
-    final Star star = new Star("TestStar", 2000000);
-    final Planet planet1 = star.addPlanet("TestPlanet1", 100000, 18000);
-    final Planet planet2 = star.addPlanet("TestPlanet2", 200000, 28000);
-    final Moon moon1 = planet1.addMoon("TestMoon1", 50, 60);
-    final Moon moon2 = planet2.addMoon("TestMoon2", 60, 60);
+    final Star star = new Star("TestStar", 2000000, 10000);
+    final Planet planet1 = star.addPlanet("TestPlanet1", 100000, 18000, 40);
+    final Planet planet2 = star.addPlanet("TestPlanet2", 200000, 28000, 50);
+    final Moon moon1 = planet1.addMoon("TestMoon1", 50, 60, 4);
+    final Moon moon2 = planet2.addMoon("TestMoon2", 60, 60, 5);
     
     HeavenlyBody[] bodies = star.getHeavenlyBodies();
     
@@ -98,7 +116,7 @@ class StarTest {
     assertIsNotReferenced(planet2, bodies);
     assertIsNotReferenced(moon1, bodies);
     assertIsNotReferenced(moon2, bodies);
-  }*/
+  }
 
   private void assertIsNotReferenced(Object o, Object[] objects) {
     for (Object obj : objects) {
@@ -109,7 +127,7 @@ class StarTest {
   }
 
   // Decomment this one when you need it.
-  /*private void assertInArray(HeavenlyBody body, HeavenlyBody[] bodies) {
+  private void assertInArray(HeavenlyBody body, HeavenlyBody[] bodies) {
     for (HeavenlyBody b : bodies) {
       if (b.getAvgRadiusInKm() == body.getAvgRadiusInKm()
           && b.getName().equals(body.getName())) {
@@ -117,7 +135,7 @@ class StarTest {
       }
     }
     fail("HeavenlyBody " + body + " not found in array");
-  }*/
+  }
 }
     
     
