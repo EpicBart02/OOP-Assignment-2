@@ -79,7 +79,8 @@ public class Star extends HeavenlyBody {
    * Prints string.
    */
   public String toString() {
-    String pin = "Star: " + getName() + ", average radius " + getAvgRadiusInKm() + " \n "; 
+    String pin = "Star: " + getName() + ", average radius " + getAvgRadiusInKm() + ", average tmep is " + getAvgTemp() 
+        + "C" + " \n "; 
     for (Planet i : planets) {
       pin += i;
     }

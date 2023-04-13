@@ -20,7 +20,7 @@ public abstract class HeavenlyBody {
   }
 
   private void setName(String newName) {
-    if (newName == null || newName == "") {
+    if (newName == null || newName.equals("")) {
       throw new IllegalArgumentException("The Name is invalid.");
     } else {
       this.name = newName;

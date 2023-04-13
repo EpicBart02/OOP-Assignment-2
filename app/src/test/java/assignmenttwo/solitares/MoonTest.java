@@ -14,10 +14,10 @@ class MoonTest {
     assertEquals(10, moon.getAvgRadiusInKm());
   }
 
-  /*@Test
+  @Test
   void testMoonConstructor_nullName() {
     assertThrows(IllegalArgumentException.class, () -> new Moon(null, 10));
-  }*/
+  }
 
   @Test
   void testMoonConstructor_emptyName() {

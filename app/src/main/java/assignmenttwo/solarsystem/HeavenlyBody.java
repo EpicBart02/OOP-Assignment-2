@@ -27,10 +27,11 @@ public abstract class HeavenlyBody implements java.lang.Comparable<HeavenlyBody>
   */
   
   public void setName(String newName) {
-    this.name = newName;
     if (newName == null || newName.equals("")) {
-      throw new IllegalArgumentException("Name must not be null or empty!");
-    } 
+      throw new IllegalArgumentException("The Name is invalid.");
+    } else {
+      this.name = newName;
+    }
   }
   
   public int getAvgRadiusInKm() { 

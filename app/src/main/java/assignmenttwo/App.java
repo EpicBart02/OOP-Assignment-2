@@ -4,6 +4,8 @@
 
 package assignmenttwo;
 
+import java.util.Arrays;
+
 /**
 * This is the generated Hello World Greeting App.
 */
@@ -98,29 +100,36 @@ public class App {
   }
   
   private void solarSytem() {
-    assignmenttwo.solarsystem.Star star = new assignmenttwo.solarsystem.Star("Sun", 696342, 201);
-    assignmenttwo.solarsystem.Planet earthPlanet = star.addPlanet("earth", 6371, 6371000);
-    earthPlanet.addMoon("Moon", 1737, 1737000);
+    assignmenttwo.solarsystem.Star star = new assignmenttwo.solarsystem.Star("Sun", 696342, 11000);
+    assignmenttwo.solarsystem.Planet earthPlanet = star.addPlanet("Earth", 6371, 6371000, 40);
+    earthPlanet.addMoon("Moon", 1737, 1737000, 0);
 
-    assignmenttwo.solarsystem.Planet marsPlanet = star.addPlanet("Mars", 3389, 3389000);
-    marsPlanet.addMoon("phobos", 12, 12000);
-    marsPlanet.addMoon("deimos", 6, 6000);
+    assignmenttwo.solarsystem.Planet marsPlanet = star.addPlanet("Mars", 3389, 3389000, 10);
+    marsPlanet.addMoon("Phobos", 12, 12000, 10);
+    marsPlanet.addMoon("Deimos", 6, 6000, 1);
 
 
-    assignmenttwo.solarsystem.Planet jupiterPlanet = star.addPlanet("Jupiter", 69911, 6911000);
-    jupiterPlanet.addMoon("io", 1821, 1821000);
-    jupiterPlanet.addMoon("europa", 1560, 1560000);
-    jupiterPlanet.addMoon("ganymede", 2634, 2634000);
-    jupiterPlanet.addMoon("callisto", 2410, 2410000);
+    assignmenttwo.solarsystem.Planet jupiterPlanet = star.addPlanet("Jupiter", 69911, 6911000, -40);
+    jupiterPlanet.addMoon("Io", 1821, 1821000, 1);
+    jupiterPlanet.addMoon("Europa", 1560, 1560000, 5);
+    jupiterPlanet.addMoon("Ganymede", 2634, 2634000, 2);
+    jupiterPlanet.addMoon("Callisto", 2410, 2410000, -12);
 
-    assignmenttwo.solarsystem.Planet saturnPlanet = star.addPlanet("saturn", 58232, 58232000);
-    saturnPlanet.addMoon("mimas", 198, 198000);
-    saturnPlanet.addMoon("enceladus", 252, 252000);
-    saturnPlanet.addMoon("tethys", 533, 533000);
-    saturnPlanet.addMoon("dione", 561, 561000);
-    saturnPlanet.addMoon("rhea", 764, 764000);
-    saturnPlanet.addMoon("titan", 2575, 2575000);
+    assignmenttwo.solarsystem.Planet saturnPlanet = star.addPlanet("Saturn", 58232, 58232000, -100);
+    saturnPlanet.addMoon("Mimas", 198, 198000, 12);
+    saturnPlanet.addMoon("Enceladus", 252, 252000, 4);
+    saturnPlanet.addMoon("Tethys", 533, 533000, 10);
+    saturnPlanet.addMoon("Dione", 561, 561000, -30);
+    saturnPlanet.addMoon("Rhea", 764, 764000, 0);
+    saturnPlanet.addMoon("Titan", 2575, 2575000, -120);
     System.out.println(star.toString());
+
+    assignmenttwo.solarsystem.HeavenlyBody[] heaven = star.getHeavenlyBodies();
+    Arrays.sort(heaven);
+    for (assignmenttwo.solarsystem.HeavenlyBody solarsys : heaven) {
+      System.out.println("Heavenly Body: " + solarsys.getName() + ", average radius " + solarsys.getAvgRadiusInKm() 
+          + "km, " + "average temp, " + solarsys.getAvgTemp() + "C");
+    }
   }
   
   

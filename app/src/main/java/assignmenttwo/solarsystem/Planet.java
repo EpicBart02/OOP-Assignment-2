@@ -85,7 +85,8 @@ public class Planet extends HeavenlyBody {
   */
   public String toString() {
     String in = " Planet: " + getName() + " average radius " + getAvgRadiusInKm() + "km " 
-        + ", average orbit radius " + getAvgOrbitRadiusInKm() + "km" + " \n ";
+        + ", average orbit radius " + getAvgOrbitRadiusInKm() + "km," + " average temp is, "
+            + getAvgTemp() + "C" + " \n ";
     for (Moon i : moons) {
       in += i;
     }

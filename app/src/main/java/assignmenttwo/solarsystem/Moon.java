@@ -39,8 +39,12 @@ public class Moon extends HeavenlyBody {
     }
   }
 
+  /**
+   * Returning a string of the object.
+   */
   public String toString() {
     return "    Moon: " + getName() + " average radius " + getAvgRadiusInKm() + "km " 
-      + ", average orbit radius " + getAvgOrbitRadiusInKm() + "km" + " \n ";
+      + ", average orbit radius " + getAvgOrbitRadiusInKm() + "km," + " average temp is, "
+          + getAvgTemp() + "C" +  " \n ";
   }
 }
