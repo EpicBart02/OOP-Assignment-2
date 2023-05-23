@@ -3,17 +3,17 @@ package assignmenttwo.solarsystem;
 import java.util.ArrayList;
 
 /**
- * class for star.
- */
+* class for star.
+*/
 
 public class Star extends HeavenlyBody {
-    
+  
   private ArrayList<Planet> planets;
-
+  
   /**
-   * constructor for star.
-   */
-
+  * constructor for star.
+  */
+  
   public Star(String name, int avgRadiusInKm, int averageTemperature) {
     super(name, avgRadiusInKm, averageTemperature);
     setName(name);
@@ -21,63 +21,60 @@ public class Star extends HeavenlyBody {
     planets = new ArrayList<Planet>();
     new ArrayList<Moon>();
   }
-
+  
   /**
-   * constructor to addplanet.
-   */
-
+  * constructor to addplanet.
+  */
+  
   public Planet addPlanet(String name, int avgRadiusInKm, double avgOrbitRadiusInKm, int temp) {
     Planet planet = new Planet(name, avgRadiusInKm, avgOrbitRadiusInKm, temp);
     planets.add(planet);
     return planet;
   }
-
+  
   /**
-   * getter for heavenlybody.
-   */
-
+  * getter for heavenlybody.
+  */
+  
+  
   public HeavenlyBody[] getHeavenlyBodies() {
-    int length = planets.size() + 1;
+    int length = 1; 
     for (Planet planet : planets) {
-      length += planet.moons.size();
+      length += planet.getHeavenlyBodies().length;
     }
+
     HeavenlyBody[] copy = new HeavenlyBody[length];
-    Star cope = new Star(getName(), getAvgRadiusInKm(), getAvgTemp());
-    copy[0] = cope;
+    Star starCopy = new Star(getName(), getAvgRadiusInKm(), getAvgTemp());
+    copy[0] = starCopy;
+
     int h = 1;
-    for (int i = 0; i < planets.size(); ++i) {
-      Planet copies = new Planet(planets.get(i).getName(), planets.get(i).getAvgRadiusInKm(),
-            planets.get(i).getAvgOrbitRadiusInKm(), planets.get(i).getAvgTemp());
-      copy[h] = copies;
-      h++;
-    }
     for (Planet planet : planets) {
-      for (Moon moon : planet.moons) {
-        Moon mooncopy = new Moon(moon.getName(), moon.getAvgRadiusInKm(),
-            moon.getAvgOrbitRadiusInKm(), moon.getAvgTemp());
-        copy[h] = mooncopy;
+      HeavenlyBody[] planetBodies = planet.getHeavenlyBodies();
+      for (int i = 0; i < planetBodies.length; i++) {
+        copy[h] = planetBodies[i];
         h++;
       }
     }
     return copy;
   }
-
+  
+  
   @Override
   protected void checkAvgRadiusInKm(int radius) {
     if (radius < 16700) {
       throw new IllegalArgumentException("Radius is out of bounds!");
     }
   }
-
+  
   protected void checkAvgTemp(int temp) {
     if (temp < 10000) {
       throw new IllegalArgumentException("The temp is out of bounds, please pick a temprature over 10.000 C");
     }
   }
-
+  
   /**
-   * Prints string.
-   */
+  * Prints string.
+  */
   public String toString() {
     String pin = "Star: " + getName() + ", average radius " + getAvgRadiusInKm() + ", average tmep is " + getAvgTemp() 
         + "C" + " \n "; 

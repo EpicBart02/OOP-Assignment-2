@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Planet extends HeavenlyBody {
   
   private double avgOrbitRadiusInKm;
-  ArrayList<Moon> moons;
+  private ArrayList<Moon> moons;
   
   /**
   * constructor for planet.
@@ -79,6 +79,7 @@ public class Planet extends HeavenlyBody {
       throw new IllegalArgumentException("The temp is out of bounds, please pick a temprature between -218C and 430C");
     }
   }
+
   
   /**
   * tostring.
